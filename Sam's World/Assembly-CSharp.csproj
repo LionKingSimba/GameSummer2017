@@ -47,7 +47,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Classes\BaseClass.cs" />
-     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Classes\BaseFighterClass.cs" />
+     <Compile Include="Assets\Scripts\Classes\BaseMageClass.cs" />
+     <Compile Include="Assets\Scripts\Classes\BaseRogueClass.cs" />
+     <Compile Include="Assets\Scripts\GUI.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
