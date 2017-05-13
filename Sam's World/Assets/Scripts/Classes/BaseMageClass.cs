@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BaseMageClass : BaseClass {
+public class BaseMageClass : BaseClass
+{
 
-    public void MageClass() {
+    public void MageClass()
+    {
         ClassName = "Mage";
         ClassDescription = "Mages use their spells and mana to battle enemies.";
         Strength = 5;

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BaseRogueClass : BaseClass {
+public class BaseRogueClass : BaseClass
+{
 
-    public void RogueClass() {
+    public void RogueClass()
+    {
         ClassName = "Rogue";
         ClassDescription = "Rogues use their finesse and speed to battle enemies.";
         Strength = 5;

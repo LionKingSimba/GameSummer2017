@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GUI : MonoBehaviour {
+
+public class GUI
+{
 
     private BaseClass fighter = new BaseFighterClass();
     private BaseClass rogue = new BaseRogueClass();
@@ -17,7 +19,8 @@ public class GUI : MonoBehaviour {
 	
 	}
 
-    void OnGUI() {
+    void OnGUI()
+    {
         GUILayout.Label(fighter.ClassName);
         GUILayout.Label(fighter.ClassDescription);
         GUILayout.Label(rogue.ClassName);

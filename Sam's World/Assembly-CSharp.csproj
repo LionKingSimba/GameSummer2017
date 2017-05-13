@@ -51,6 +51,9 @@
      <Compile Include="Assets\Scripts\Classes\BaseMageClass.cs" />
      <Compile Include="Assets\Scripts\Classes\BaseRogueClass.cs" />
      <Compile Include="Assets\Scripts\GUI.cs" />
+     <Compile Include="Assets\Scripts\Items\BaseItem.cs" />
+     <Compile Include="Assets\Scripts\Items\BaseItemStats.cs" />
+     <Compile Include="Assets\Scripts\Items\BaseWeapon.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -6,7 +6,7 @@ using UnityEngine;
 public class BaseClass {
 
 	private string classname;
-	private string description;
+	private string classdescription;
 
 	private int strength;
 	private int dexterity;
@@ -20,39 +20,46 @@ public class BaseClass {
 		set{classname = value;}
 	}
 
-	public string ClassDescription {
-		get{return description;}
-		set{description = value;}
+	public string ClassDescription
+    {
+		get { return classdescription; }
+		set { classdescription = value; }
 	}
 
-	public int Strength {
-		get{return strength;}
-		set{strength = value;}
+	public int Strength
+    {
+		get { return strength; }
+		set { strength = value; }
 	}
 
-	public int Dexterity {
-		get{return dexterity;}
-		set{dexterity = value;}
+	public int Dexterity
+    {
+		get { return dexterity; }
+		set { dexterity = value; }
 	}
 
-	public int Intelligence {
-		get{return intelligence;}
-		set{intelligence = value;}
+	public int Intelligence
+    {
+		get { return intelligence; }
+		set { intelligence = value; }
 	}
 
-	public int Endurance {
-		get{return endurance;}
-		set{endurance = value;}
+	public int Endurance
+    {
+		get { return endurance; }
+		set { endurance = value; }
 	}
 
-	public int Agility {
-		get{return agility;}
-		set{agility = value;}
+	public int Agility
+    {
+		get { return agility; }
+		set { agility = value; }
 	}
 
-	public int Wisdom {
-		get{return wisdom;}
-		set{wisdom = value;}
+	public int Wisdom
+    {
+		get { return wisdom; }
+		set { wisdom = value; }
 	}
 
 }
