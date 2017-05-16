@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\Items\BaseItem.cs" />
      <Compile Include="Assets\Scripts\Items\BaseItemStats.cs" />
      <Compile Include="Assets\Scripts\Items\BaseWeapon.cs" />
+     <Compile Include="Assets\Scripts\PlayerControls.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
