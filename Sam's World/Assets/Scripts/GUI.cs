@@ -10,12 +10,14 @@ public class GUI
     private BaseClass mage = new BaseMageClass();
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 	
 	}
 

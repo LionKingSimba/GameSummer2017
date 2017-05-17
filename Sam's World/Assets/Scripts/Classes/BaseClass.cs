@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BaseClass {
+public class BaseClass
+{
 
 	private string classname;
 	private string classdescription;
@@ -15,9 +16,10 @@ public class BaseClass {
 	private int agility;
 	private int wisdom;
 
-	public string ClassName {
-		get{return classname;}
-		set{classname = value;}
+	public string ClassName
+    {
+		get{ return classname; }
+		set{ classname = value; }
 	}
 
 	public string ClassDescription
