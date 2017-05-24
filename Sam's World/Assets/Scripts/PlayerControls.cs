@@ -41,6 +41,16 @@ public class PlayerControls : MonoBehaviour
             lastmove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
         }
 
+        if (Input.GetAxisRaw("Horizontal") < 0.5f && Input.GetAxisRaw("Horizontal") > -0.5f)
+        {
+            playerrigidbody.velocity = new Vector2(0f, playerrigidbody.velocity.y);
+        }
+
+        if(Input.GetAxisRaw("Vertical") < 0.5f && Input.GetAxisRaw("Vertical") > -0.5f)
+        {
+            playerrigidbody.velocity = new Vector2(playerrigidbody.velocity.x, 0f);
+        }
+
         player.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
         player.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));
         player.SetBool("PlayerMoving", playermoving);
