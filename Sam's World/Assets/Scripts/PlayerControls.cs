@@ -18,6 +18,8 @@ public class PlayerControls : MonoBehaviour
     {
         player = GetComponent<Animator>();
         playerrigidbody = GetComponent<Rigidbody2D>();
+
+        DontDestroyOnLoad(transform.gameObject);
 	}
 	
 	// Update called once per frame

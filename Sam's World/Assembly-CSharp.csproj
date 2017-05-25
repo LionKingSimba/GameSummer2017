@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Items\BaseItem.cs" />
      <Compile Include="Assets\Scripts\Items\BaseItemStats.cs" />
      <Compile Include="Assets\Scripts\Items\BaseWeapon.cs" />
+     <Compile Include="Assets\Scripts\LoadNewScene.cs" />
      <Compile Include="Assets\Scripts\PlayerControls.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GroupLayer.cs" />
