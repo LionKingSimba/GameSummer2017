@@ -13,13 +13,23 @@ public class PlayerControls : MonoBehaviour
     private bool playermoving;
     private Vector2 lastmove;
 
+    private static bool playerinscene;
+
 	// initialization
 	void Start ()
     {
         player = GetComponent<Animator>();
         playerrigidbody = GetComponent<Rigidbody2D>();
 
-        DontDestroyOnLoad(transform.gameObject);
+        if (!playerinscene)
+        {
+            playerinscene = true;
+            DontDestroyOnLoad(transform.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 	}
 	
 	// Update called once per frame
@@ -48,7 +58,7 @@ public class PlayerControls : MonoBehaviour
             playerrigidbody.velocity = new Vector2(0f, playerrigidbody.velocity.y);
         }
 
-        if(Input.GetAxisRaw("Vertical") < 0.5f && Input.GetAxisRaw("Vertical") > -0.5f)
+        if (Input.GetAxisRaw("Vertical") < 0.5f && Input.GetAxisRaw("Vertical") > -0.5f)
         {
             playerrigidbody.velocity = new Vector2(playerrigidbody.velocity.x, 0f);
         }
