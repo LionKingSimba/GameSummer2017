@@ -11,7 +11,8 @@ public class PlayerControls : MonoBehaviour
     private Rigidbody2D playerrigidbody;
 
     private bool playermoving;
-    private Vector2 lastmove;
+
+    public Vector2 LastMove;
 
     private static bool playerinscene;
 
@@ -42,7 +43,7 @@ public class PlayerControls : MonoBehaviour
             //transform.Translate(new Vector3(Input.GetAxisRaw("Horizontal") * MoveSpeed * Time.deltaTime, 0f, 0f));
             playerrigidbody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * MoveSpeed, playerrigidbody.velocity.y);
             playermoving = true;
-            lastmove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
+            LastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
         }
 
         if (Input.GetAxisRaw("Vertical") > 0.5f || Input.GetAxisRaw("Vertical") < -0.5f)
@@ -50,7 +51,7 @@ public class PlayerControls : MonoBehaviour
             //transform.Translate(new Vector3(0f, Input.GetAxisRaw("Vertical") * MoveSpeed * Time.deltaTime, 0f));
             playerrigidbody.velocity = new Vector2(playerrigidbody.velocity.x, Input.GetAxisRaw("Vertical") * MoveSpeed);
             playermoving = true;
-            lastmove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
+            LastMove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
         }
 
         if (Input.GetAxisRaw("Horizontal") < 0.5f && Input.GetAxisRaw("Horizontal") > -0.5f)
@@ -66,8 +67,8 @@ public class PlayerControls : MonoBehaviour
         player.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
         player.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));
         player.SetBool("PlayerMoving", playermoving);
-        player.SetFloat("LastMoveX", lastmove.x);
-        player.SetFloat("LastMoveY", lastmove.y);
+        player.SetFloat("LastMoveX", LastMove.x);
+        player.SetFloat("LastMoveY", LastMove.y);
     }
 
 }
