@@ -56,8 +56,8 @@
      <Compile Include="Assets\Scripts\Items\BaseItemStats.cs" />
      <Compile Include="Assets\Scripts\Items\BaseWeapon.cs" />
      <Compile Include="Assets\Scripts\LoadNewScene.cs" />
+     <Compile Include="Assets\Scripts\LoadPlayerLocation.cs" />
      <Compile Include="Assets\Scripts\PlayerControls.cs" />
-     <Compile Include="Assets\Scripts\PlayerLocation.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GroupLayer.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\ImportBehaviour.cs" />

@@ -16,17 +16,21 @@ public class PlayerControls : MonoBehaviour
 
     private static bool playerinscene;
 
+    public string EntryLocationName;
+
 	// initialization
 	void Start ()
     {
         player = GetComponent<Animator>();
         playerrigidbody = GetComponent<Rigidbody2D>();
 
+        //if new scene has no player, keep the past scene player
         if (!playerinscene)
         {
             playerinscene = true;
             DontDestroyOnLoad(transform.gameObject);
         }
+        //if new scene already has player, destroy the latest (duplicate) player
         else
         {
             Destroy(gameObject);

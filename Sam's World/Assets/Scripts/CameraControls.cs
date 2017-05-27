@@ -15,11 +15,13 @@ public class CameraControls : MonoBehaviour
 	// initialization
 	void Start ()
     {
+        //if new scene has no camera, keep the past scene camera
         if (!camerainscene)
         {
             camerainscene = true;
             DontDestroyOnLoad(transform.gameObject);
         }
+        //if new scene already has camera, destroy the latest (duplicate) camera
         else
         {
             Destroy(gameObject);

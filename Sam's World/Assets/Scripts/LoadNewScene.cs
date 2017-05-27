@@ -8,11 +8,14 @@ public class LoadNewScene : MonoBehaviour
 {
 
     public string SceneToLoad;
+    public string ExitLocationName;
+
+    private PlayerControls sceneplayer;
 
     // Use this for initialization
     void Start()
     {
-
+        sceneplayer = FindObjectOfType<PlayerControls>();
     }
 
     // Update is called once per frame
@@ -21,12 +24,13 @@ public class LoadNewScene : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D boxcolliderobj)
     {
-        if (other.gameObject.name == "Player")
+        if (boxcolliderobj.gameObject.name == "Player")
         {
             //Application.LoadLevel(SceneToLoad);
             SceneManager.LoadScene(SceneToLoad);
+            sceneplayer.EntryLocationName = ExitLocationName; //new scene player's location will be exit location that old scene player triggered
         }
     }
 
