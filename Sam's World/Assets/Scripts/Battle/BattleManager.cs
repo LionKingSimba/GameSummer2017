@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class BattleManager : MonoBehaviour {
 
     GameObject player;
-    GameObject[] allies;
+    List<GameObject> allies = new List<GameObject>(); // allies[0] is player, allies[1] and allies[2] are the other party members.
     GameObject ally1;
     GameObject ally2;
 
-    GameObject[] enemies;
+    List<GameObject> enemies = new List<GameObject>(); // List storing enemies
+
+    Dictionary<GameObject, int> atbDict = new Dictionary<GameObject, int>(); // All allies and enemies. The key is the character itself, the value is its ATB.
 
     public Text[] statusPanels;
 
@@ -21,21 +23,20 @@ public class BattleManager : MonoBehaviour {
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player");
+            allies.Insert(0, player);
         }
 
-        if (allies == null)
+        allies.AddRange(GameObject.FindGameObjectsWithTag("Ally"));
+        Debug.Log("Ally Count: " + allies.Count);
+        if (allies.Count > 0)
         {
-            allies = GameObject.FindGameObjectsWithTag("Ally");
-            if (allies.Length > 0)
+            if (ally1 == null)
             {
-                if (ally1 == null)
-                {
-                    ally1 = allies[0];
-                }
-                if (ally2 == null && allies.Length > 1)
-                {
-                    ally2 = allies[1];
-                }
+                ally1 = allies[1];
+            }
+            if (ally2 == null && allies.Count > 2)
+            {
+                ally2 = allies[2];
             }
         }
 
@@ -45,10 +46,7 @@ public class BattleManager : MonoBehaviour {
             Debug.Log(ally);
         }
 
-        if (enemies == null)
-        {
-            enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        }
+        enemies.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
 
         Debug.Log("The Enemies are: ");
         foreach (GameObject enemy in enemies)
@@ -57,13 +55,23 @@ public class BattleManager : MonoBehaviour {
         }
 
         // Display ally health and mana.
-        displayStatus(player, 0);
-        if (allies.Length > 0)
+        for (int i = 0; i < allies.Count; i++)
         {
-            for (int i = 0; i < allies.Length; i++)
-            {
-                displayStatus(allies[i], i+1);
-            }
+            displayStatus(allies[i], i);
+        }
+
+        // Put all entities into the atbDict.
+        foreach (GameObject entity in allies)
+        {
+            atbDict.Add(entity, 100);
+        }
+        foreach (GameObject entity in enemies)
+        {
+            atbDict.Add(entity, 100);
+        }
+        foreach (KeyValuePair<GameObject, int> pair in atbDict)
+        {
+            Debug.Log(pair);
         }
     }
 	
@@ -82,16 +90,16 @@ public class BattleManager : MonoBehaviour {
     {
         CharacterStatus status = character.GetComponent<CharacterStatus>();
         string name = status.characterName;
-        int health = status.health;
-        int mana = status.mana;
+        int currentHealth = status.currentHealth;
+        int currentMana = status.currentMana;
+        int maxHealth = status.maxHealth;
+        int maxMana = status.maxMana;
 
-        Debug.Log("Health: " + health);
-        Debug.Log("Mana: " + mana);
+        Debug.Log("Current Health: " + currentHealth);
+        Debug.Log("Current Mana: " + currentMana);
 
-        statusPanels[panel].text = name + 
-                                   "\nHealth: " + health + 
-                                   "\nMana: " + mana;
+        statusPanels[panel].text = name +
+                                   "\nHP: " + currentHealth + "/" + maxHealth + 
+                                   "\nMP: " + currentMana + "/" + maxMana;
     }
-
-    
 }

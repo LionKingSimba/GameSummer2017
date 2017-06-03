@@ -9,8 +9,11 @@ public class CharacterStatus : MonoBehaviour {
 
     public string characterName;
 
-    public int health;
-    public int mana;
+    public int maxHealth;
+    public int currentHealth;
+
+    public int maxMana;
+    public int currentMana;
 
     public int strength;
     public int intelligence;
