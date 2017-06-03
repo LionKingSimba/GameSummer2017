@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class BattleManager : MonoBehaviour {
     GameObject ally2;
 
     GameObject[] enemies;
+
+    public Text[] statusPanels;
 
 	// Use this for initialization
 	void Start () {
@@ -54,10 +57,13 @@ public class BattleManager : MonoBehaviour {
         }
 
         // Display ally health and mana.
-        displayStatus(player);
-        foreach (GameObject ally in allies)
+        displayStatus(player, 0);
+        if (allies.Length > 0)
         {
-            displayStatus(ally);
+            for (int i = 0; i < allies.Length; i++)
+            {
+                displayStatus(allies[i], i+1);
+            }
         }
     }
 	
@@ -66,19 +72,25 @@ public class BattleManager : MonoBehaviour {
 		
 	}
 
-    void displayStatus (GameObject character)
+    void displayStatus (GameObject character, int panel)
     /* Displays a character's health and mana.
      * 
      * Parameters:
      *      character: the character whose health and mana to display
+     *      panel: The character panel to display on, in order from left to right, starting from 0.
      */
     {
         CharacterStatus status = character.GetComponent<CharacterStatus>();
+        string name = status.characterName;
         int health = status.health;
         int mana = status.mana;
 
         Debug.Log("Health: " + health);
         Debug.Log("Mana: " + mana);
+
+        statusPanels[panel].text = name + 
+                                   "\nHealth: " + health + 
+                                   "\nMana: " + mana;
     }
 
     
