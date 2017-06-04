@@ -12,9 +12,15 @@ public class BattleManager : MonoBehaviour {
 
     List<GameObject> enemies = new List<GameObject>(); // List storing enemies
 
-    Dictionary<GameObject, int> atbDict = new Dictionary<GameObject, int>(); // All allies and enemies. The key is the character itself, the value is its ATB.
+    // Dictionary<GameObject, int> atbDict = new Dictionary<GameObject, int>(); // All allies and enemies. The key is the character itself, the value is its ATB.
+
+    List<GameObject> entities = new List<GameObject>(); // List of all allies and enemies.
+    int entitiesPointer = 0; // A pointer to a specific entity in the list.
+    List<GameObject> turnQueue = new List<GameObject>(); // Queue of who will go next.
 
     public Text[] statusPanels;
+
+    bool battleOver = false;
 
 	// Use this for initialization
 	void Start () {
@@ -61,18 +67,29 @@ public class BattleManager : MonoBehaviour {
         }
 
         // Put all entities into the atbDict.
-        foreach (GameObject entity in allies)
+        //foreach (GameObject entity in allies)
+        //{
+        //    atbDict.Add(entity, 100);
+        //}
+        //foreach (GameObject entity in enemies)
+        //{
+        //    atbDict.Add(entity, 100);
+        //}
+        //foreach (KeyValuePair<GameObject, int> pair in atbDict)
+        //{
+        //    Debug.Log(pair);
+        //}
+
+        entities.AddRange(allies);
+        entities.AddRange(enemies);
+        Debug.Log("entities: ");
+        foreach (GameObject entity in entities)
         {
-            atbDict.Add(entity, 100);
+            Debug.Log(entity);
         }
-        foreach (GameObject entity in enemies)
-        {
-            atbDict.Add(entity, 100);
-        }
-        foreach (KeyValuePair<GameObject, int> pair in atbDict)
-        {
-            Debug.Log(pair);
-        }
+
+        // Battle turn loop
+        battle();
     }
 	
 	// Update is called once per frame
@@ -101,5 +118,56 @@ public class BattleManager : MonoBehaviour {
         statusPanels[panel].text = name +
                                    "\nHP: " + currentHealth + "/" + maxHealth + 
                                    "\nMP: " + currentMana + "/" + maxMana;
+    }
+
+    void fillTurnQueue()
+    {
+        /* 
+         * Fills the turnQueue to a maximum of 4 entities.
+         */
+
+        bool queueNotFull = true;
+        while (queueNotFull)
+        {
+        // Loop through list of entities, starting at the pointer. 
+        for (int i = entitiesPointer; i < entities.Count; i++)
+        {
+            bool turn = entities[i].GetComponent<CharacterStatus>().getATB();
+            Debug.Log(turn);
+            // If the entity's ATB meter is maxed, add it to turnQueue.
+            if (turn)
+            {
+                turnQueue.Add(entities[i]);
+            }
+
+            // If there are four in the turnQueue, then the queue is full.
+            if (turnQueue.Count == 4)
+            {
+                queueNotFull = false;
+            }
+        }
+
+            // After we are done looping through all entities, reset the pointer to 0.
+            entitiesPointer = 0;
+        }
+        Debug.Log("Turn Queue: ");
+        foreach (GameObject entity in turnQueue)
+        {
+            Debug.Log(entity);
+        }
+    }
+
+    void battle()
+    {
+        /* 
+         * The battle loop:
+         * 1. Fill turnQueue
+         * 2. Conduct the turn of the entity at the front of turnQueue and remove them from the queue.
+         * 3. Check if battle is over. If yes, go to battle results screen.
+         * 4. If not, return to 1.
+        */
+
+        // 1.
+        fillTurnQueue();
     }
 }

@@ -12,6 +12,9 @@ public class CharacterStatus : MonoBehaviour {
     public int maxHealth;
     public int currentHealth;
 
+    public int maxATB;
+    public int currentATB;
+
     public int maxMana;
     public int currentMana;
 
@@ -32,5 +35,18 @@ public class CharacterStatus : MonoBehaviour {
 	void Update () {
         
 	}
+
+    public bool getATB ()
+    {
+        Debug.Log("gettting ATB");
+        currentATB += speed;
+        Debug.Log("currentATB: " + currentATB);
+        if (currentATB >= 100)
+        {
+            currentATB -= 100;
+            return true;
+        }
+        return false;
+    }
 
 }
