@@ -19,6 +19,7 @@ public class BattleManager : MonoBehaviour {
     List<GameObject> turnQueue = new List<GameObject>(); // Queue of who will go next.
 
     public Text[] statusPanels;
+    public Text turnQueuePanel;
 
     bool battleOver = false;
 
@@ -124,6 +125,7 @@ public class BattleManager : MonoBehaviour {
     {
         /* 
          * Fills the turnQueue to a maximum of 4 entities.
+         * Displays the turnQueue on the UI.
          */
 
         bool queueNotFull = true;
@@ -150,11 +152,20 @@ public class BattleManager : MonoBehaviour {
             // After we are done looping through all entities, reset the pointer to 0.
             entitiesPointer = 0;
         }
+
         Debug.Log("Turn Queue: ");
         foreach (GameObject entity in turnQueue)
         {
             Debug.Log(entity);
         }
+
+        turnQueuePanel.text = "TURN\n" +
+                              turnQueue[0].GetComponent<CharacterStatus>().characterName + "\n" +
+                              turnQueue[1].GetComponent<CharacterStatus>().characterName + "\n" +
+                              turnQueue[2].GetComponent<CharacterStatus>().characterName + "\n" +
+                              turnQueue[3].GetComponent<CharacterStatus>().characterName + "\n";
+
+
     }
 
     void battle()
