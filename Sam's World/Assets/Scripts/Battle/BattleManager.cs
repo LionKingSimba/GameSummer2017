@@ -12,14 +12,18 @@ public class BattleManager : MonoBehaviour {
 
     List<GameObject> enemies = new List<GameObject>(); // List storing enemies
 
-    // Dictionary<GameObject, int> atbDict = new Dictionary<GameObject, int>(); // All allies and enemies. The key is the character itself, the value is its ATB.
-
     List<GameObject> entities = new List<GameObject>(); // List of all allies and enemies.
     int entitiesPointer = 0; // A pointer to a specific entity in the list.
     List<GameObject> turnQueue = new List<GameObject>(); // Queue of who will go next.
 
     public Text[] statusPanels;
     public Text turnQueuePanel;
+
+    // Menu Buttons
+    public Button attackButton;
+    public Button abilitiesButton;
+    public Button itemsButton;
+    public Button fleeButton;
 
     bool battleOver = false;
 
@@ -66,20 +70,6 @@ public class BattleManager : MonoBehaviour {
         {
             displayStatus(allies[i], i);
         }
-
-        // Put all entities into the atbDict.
-        //foreach (GameObject entity in allies)
-        //{
-        //    atbDict.Add(entity, 100);
-        //}
-        //foreach (GameObject entity in enemies)
-        //{
-        //    atbDict.Add(entity, 100);
-        //}
-        //foreach (KeyValuePair<GameObject, int> pair in atbDict)
-        //{
-        //    Debug.Log(pair);
-        //}
 
         entities.AddRange(allies);
         entities.AddRange(enemies);
@@ -131,23 +121,25 @@ public class BattleManager : MonoBehaviour {
         bool queueNotFull = true;
         while (queueNotFull)
         {
-        // Loop through list of entities, starting at the pointer. 
-        for (int i = entitiesPointer; i < entities.Count; i++)
-        {
-            bool turn = entities[i].GetComponent<CharacterStatus>().getATB();
-            Debug.Log(turn);
-            // If the entity's ATB meter is maxed, add it to turnQueue.
-            if (turn)
+            // Loop through list of entities, starting at the pointer. 
+            for (int i = entitiesPointer; i < entities.Count; i++)
             {
-                turnQueue.Add(entities[i]);
-            }
+                bool turn = entities[i].GetComponent<CharacterStatus>().getATB();
 
-            // If there are four in the turnQueue, then the queue is full.
-            if (turnQueue.Count == 4)
-            {
-                queueNotFull = false;
+                // If the entity's ATB meter is maxed, add it to turnQueue.
+                if (turn)
+                {
+                    turnQueue.Add(entities[i]);
+                }
+
+                // If there are four in the turnQueue, then the queue is full.
+                if (turnQueue.Count == 4)
+                {
+                    queueNotFull = false;
+                    entitiesPointer = i;
+                    break;
+                }
             }
-        }
 
             // After we are done looping through all entities, reset the pointer to 0.
             entitiesPointer = 0;
@@ -158,6 +150,7 @@ public class BattleManager : MonoBehaviour {
         {
             Debug.Log(entity);
         }
+        Debug.Log("Queue Length: " + turnQueue.Count);
 
         turnQueuePanel.text = "TURN\n" +
                               turnQueue[0].GetComponent<CharacterStatus>().characterName + "\n" +
@@ -165,7 +158,46 @@ public class BattleManager : MonoBehaviour {
                               turnQueue[2].GetComponent<CharacterStatus>().characterName + "\n" +
                               turnQueue[3].GetComponent<CharacterStatus>().characterName + "\n";
 
+    }
 
+    void playerTurn()
+    {
+        /*
+         * Conducts a player turn. 
+         */
+
+        // Set buttons to active.
+        attackButton.interactable = true;
+        abilitiesButton.interactable = true;
+        itemsButton.interactable = true;
+        fleeButton.interactable = true;
+
+        bool actionTaken = false;
+        endTurn();
+    }
+
+    public void attack()
+    {
+        Debug.Log("Player Attacked!!!!");
+    }
+
+    void endTurn()
+    {
+        turnQueue.RemoveAt(0);
+        Debug.Log("turnQueue: ");
+        foreach (GameObject item in turnQueue)
+        {
+            Debug.Log(item);
+        }
+        Debug.Log("Queue Length: " + turnQueue.Count);
+    }
+
+    void enemyTurn()
+    {
+        attackButton.interactable = false;
+        abilitiesButton.interactable = false;
+        itemsButton.interactable = false;
+        fleeButton.interactable = false;
     }
 
     void battle()
@@ -180,5 +212,22 @@ public class BattleManager : MonoBehaviour {
 
         // 1.
         fillTurnQueue();
+
+        // 2.
+        if (turnQueue[0].tag == "Enemy") 
+        {
+            // Conduct enemy turn
+            
+        }
+        else if (turnQueue[0].tag == "Player" || turnQueue[0].tag == "Ally")
+        {
+            // Conduct player turn
+            playerTurn();
+        }
+        else
+        {
+            Debug.Log("Entity not tagged!!!!!!");
+        }
+
     }
 }

@@ -38,9 +38,7 @@ public class CharacterStatus : MonoBehaviour {
 
     public bool getATB ()
     {
-        Debug.Log("gettting ATB");
         currentATB += speed;
-        Debug.Log("currentATB: " + currentATB);
         if (currentATB >= 100)
         {
             currentATB -= 100;
