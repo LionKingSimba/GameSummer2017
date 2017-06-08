@@ -6,6 +6,9 @@ public class NPCMovement : MonoBehaviour {
 
     public float MoveSpeed;
 
+    private Vector2 minmovecoord;
+    private Vector2 maxmovecoord;
+
     private Rigidbody2D NPCrigidbody;
 
     public bool IsMoving;
@@ -17,6 +20,10 @@ public class NPCMovement : MonoBehaviour {
 
     private int Direction;
 
+    public Collider2D WalkArea;
+
+    private bool haswalkarea;
+
 	// Use this for initialization
 	void Start () {
 		NPCrigidbody = GetComponent<Rigidbody2D>();
@@ -25,6 +32,13 @@ public class NPCMovement : MonoBehaviour {
         waitcounter = WaitTime;
 
         ChooseDirection();
+
+        if(WalkArea != null)
+        {
+            minmovecoord = WalkArea.bounds.min;
+            maxmovecoord = WalkArea.bounds.max;
+            haswalkarea = true;
+        }
 	}
 	
 	// Update is called once per frame
@@ -38,18 +52,38 @@ public class NPCMovement : MonoBehaviour {
             {
                 case 0:
                     NPCrigidbody.velocity = new Vector2(0, MoveSpeed);
+                    if(haswalkarea && transform.position.y > maxmovecoord.y)
+                    {
+                        IsMoving = false;
+                        waitcounter = WaitTime;
+                    }
                     break;
 
                 case 1:
                     NPCrigidbody.velocity = new Vector2(MoveSpeed, 0);
+                    if (haswalkarea && transform.position.x > maxmovecoord.x)
+                    {
+                        IsMoving = false;
+                        waitcounter = WaitTime;
+                    }
                     break;
 
                 case 2:
                     NPCrigidbody.velocity = new Vector2(0, -MoveSpeed);
+                    if (haswalkarea && transform.position.y < minmovecoord.y)
+                    {
+                        IsMoving = false;
+                        waitcounter = WaitTime;
+                    }
                     break;
 
                 case 3:
                     NPCrigidbody.velocity = new Vector2(-MoveSpeed, 0);
+                    if (haswalkarea && transform.position.x < minmovecoord.x)
+                    {
+                        IsMoving = false;
+                        waitcounter = WaitTime;
+                    }
                     break;
             }
 
