@@ -2,19 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueTrigger : MonoBehaviour {
+public class DialogueTrigger : MonoBehaviour
+{
 
-    public string dialogue;
+    public string DialogueString;
+    public string[] DialogueArray;
 
     private DialogueControls dialoguecontroller;
 
-	// Use this for initialization
-	void Start () {
+
+	
+	void Start ()
+    {
         dialoguecontroller = FindObjectOfType<DialogueControls>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 
@@ -24,7 +28,13 @@ public class DialogueTrigger : MonoBehaviour {
         {
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                dialoguecontroller.ShowBox(dialogue);
+                //dialoguecontroller.ShowBox(DialogueString);
+                if(!dialoguecontroller.DialogueOn)
+                {
+                    dialoguecontroller.DialogueArray = DialogueArray;
+                    dialoguecontroller.CurrentLine = 0;
+                    dialoguecontroller.ShowDialogue();
+                }
             }
         }
     }

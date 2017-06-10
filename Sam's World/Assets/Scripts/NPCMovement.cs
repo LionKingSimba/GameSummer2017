@@ -24,7 +24,7 @@ public class NPCMovement : MonoBehaviour {
 
     private bool haswalkarea;
 
-	// Use this for initialization
+	
 	void Start () {
 		NPCrigidbody = GetComponent<Rigidbody2D>();
 
@@ -41,7 +41,6 @@ public class NPCMovement : MonoBehaviour {
         }
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if(IsMoving)
         {

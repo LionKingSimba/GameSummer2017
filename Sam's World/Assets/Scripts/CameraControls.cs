@@ -12,7 +12,7 @@ public class CameraControls : MonoBehaviour
 
     private static bool camerainscene;
 
-	// initialization
+	
 	void Start ()
     {
         //if new scene has no camera, keep the past scene camera
@@ -28,7 +28,6 @@ public class CameraControls : MonoBehaviour
         }
     }
 	
-	// Update is called once per frame
 	void Update ()
     {
         targetposition = new Vector3(FollowTarget.transform.position.x, FollowTarget.transform.position.y, transform.position.z);

@@ -21,7 +21,7 @@ public class PlayerControls : MonoBehaviour
 
     public string EntryLocationName;
 
-	// initialization
+	
 	void Start ()
     {
         player = GetComponent<Animator>();
@@ -40,7 +40,6 @@ public class PlayerControls : MonoBehaviour
         }
 	}
 	
-	// Update called once per frame
 	void Update ()
     {
         playermoving = false;

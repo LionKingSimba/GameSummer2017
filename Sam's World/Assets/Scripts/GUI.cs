@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GUI : MonoBehaviour {
+public class GUI : MonoBehaviour
+{
 
     private static bool guiinscene;
 
-	// Use this for initialization
-	void Start () {
+	
+	void Start ()
+    {
         //if new scene has no gui, keep the past scene gui
         if (!guiinscene)
         {
@@ -22,8 +24,8 @@ public class GUI : MonoBehaviour {
         }
     }
 	
-	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 }

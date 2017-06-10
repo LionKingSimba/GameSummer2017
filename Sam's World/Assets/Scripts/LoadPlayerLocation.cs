@@ -12,7 +12,7 @@ public class LoadPlayerLocation : MonoBehaviour
 
     public string LocationName;
 
-	// Use this for initialization
+	
 	void Start ()
     {
         sceneplayer = FindObjectOfType<PlayerControls>();
@@ -27,8 +27,7 @@ public class LoadPlayerLocation : MonoBehaviour
             scenecamera.transform.position = new Vector3(transform.position.x, transform.position.y, scenecamera.transform.position.z);
         }
 	}
-	
-	// Update is called once per frame
+
 	void Update ()
     {
 		

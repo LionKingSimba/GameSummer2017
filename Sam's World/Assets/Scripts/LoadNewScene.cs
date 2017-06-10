@@ -12,13 +12,12 @@ public class LoadNewScene : MonoBehaviour
 
     private PlayerControls sceneplayer;
 
-    // Use this for initialization
+    
     void Start()
     {
         sceneplayer = FindObjectOfType<PlayerControls>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
 
