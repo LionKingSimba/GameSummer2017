@@ -5,12 +5,11 @@ using UnityEngine;
 public class LoadPlayerLocation : MonoBehaviour
 {
 
-    private PlayerControls sceneplayer;
-    private CameraControls scenecamera;
-
+    public string LocationName; //player's current location in the loaded scene
     public Vector2 InitialDirection;
 
-    public string LocationName;
+    private PlayerControls sceneplayer;
+    private CameraControls scenecamera;
 
 	
 	void Start ()

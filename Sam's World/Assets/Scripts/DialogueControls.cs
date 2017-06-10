@@ -8,16 +8,16 @@ public class DialogueControls : MonoBehaviour
 
     public GameObject TextBox;
     public Text Text;
-
-    public bool DialogueOn;
-
+    public bool DialogueOn; //variable to see if talking is true or false
     public string[] DialogueArray;
-    public int CurrentLine;
+    public int CurrentLine; //index number of dialogue line in the array
     
+    private PlayerControls player;
+
 
 	void Start ()
     {
-        
+        player = FindObjectOfType<PlayerControls>();
 	}
 	
 	void Update ()
@@ -29,12 +29,13 @@ public class DialogueControls : MonoBehaviour
             //DialogueOn = false;
             CurrentLine++;
         }
-        //reset dialogue at end
+        //reset dialogue and player movement when talking is done
         if(CurrentLine >= DialogueArray.Length)
         {
             TextBox.SetActive(false);
             DialogueOn = false;
             CurrentLine = 0;
+            player.CanMove = true;
         }
         //get current line of dialogue
         Text.text = DialogueArray[CurrentLine];
@@ -53,6 +54,7 @@ public class DialogueControls : MonoBehaviour
     {
         DialogueOn = true;
         TextBox.SetActive(true);
+        player.CanMove = false; //stop player from moving when talking
     }
 
 }

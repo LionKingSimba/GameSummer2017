@@ -5,12 +5,11 @@ using UnityEngine;
 public class CameraControls : MonoBehaviour
 {
 
-    public GameObject FollowTarget;
+    public GameObject FollowTarget; //object that camera follows
     public float CameraSpeed;
 
+    private static bool camerainscene; //to ensure number of cameras in scene is 1
     private Vector3 targetposition;
-
-    private static bool camerainscene;
 
 	
 	void Start ()

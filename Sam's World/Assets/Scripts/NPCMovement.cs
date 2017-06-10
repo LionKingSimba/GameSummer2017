@@ -2,52 +2,67 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCMovement : MonoBehaviour {
-
-    public float MoveSpeed;
-
-    private Vector2 minmovecoord;
-    private Vector2 maxmovecoord;
-
-    private Rigidbody2D NPCrigidbody;
+public class NPCMovement : MonoBehaviour
+{
 
     public bool IsMoving;
+    public bool CanMove;
+    public float MoveSpeed;
     public float MoveTime;
-    public float WaitTime;
-
-    private float movecounter;
-    private float waitcounter;
-
-    private int Direction;
-
+    public float WaitTime; //seconds between moving (stopped)
     public Collider2D WalkArea;
 
+    private Rigidbody2D NPCrigidbody;
+    private Vector2 minmovecoord; //bottom left of walk area
+    private Vector2 maxmovecoord; //top right corner of walk area
+    private float movecounter; //number of ticks to move
+    private float waitcounter; //number of ticks to stop moving
+    private int direction;
     private bool haswalkarea;
+    private DialogueControls dialoguecontroller;
 
 	
 	void Start () {
 		NPCrigidbody = GetComponent<Rigidbody2D>();
+        dialoguecontroller = FindObjectOfType<DialogueControls>();
 
         movecounter = MoveTime;
         waitcounter = WaitTime;
 
         ChooseDirection();
 
+        //bound NPC to walk area
         if(WalkArea != null)
         {
             minmovecoord = WalkArea.bounds.min;
             maxmovecoord = WalkArea.bounds.max;
             haswalkarea = true;
         }
+
+        CanMove = true;
 	}
 	
 	void Update () {
+        //can move if not talking (no dialogue box)
+        if(!dialoguecontroller.DialogueOn)
+        {
+            CanMove = true;
+        }
+
+        //stop moving if talking
+        if (!CanMove)
+        {
+            NPCrigidbody.velocity = Vector2.zero;
+            return;
+        }
+
+        //NPC movement logic
 		if(IsMoving)
         {
             movecounter -= Time.deltaTime; //move for MoveTime seconds
        
             //move in chosen direction
-            switch(Direction)
+            switch(direction)
             {
                 case 0:
                     NPCrigidbody.velocity = new Vector2(0, MoveSpeed);
@@ -93,7 +108,7 @@ public class NPCMovement : MonoBehaviour {
                 waitcounter = WaitTime;
             }
         }
-        else
+        else //stop moving and wait until counter hits 0
         {
             waitcounter -= Time.deltaTime;
 
@@ -110,7 +125,7 @@ public class NPCMovement : MonoBehaviour {
     //0=up, 1=right, 2=down, 3=left
     public void ChooseDirection()
     {
-        Direction = Random.Range(0, 4);
+        direction = Random.Range(0, 4);
         IsMoving = true;
         movecounter = MoveTime;
     }

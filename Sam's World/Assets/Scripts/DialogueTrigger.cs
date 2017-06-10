@@ -10,7 +10,6 @@ public class DialogueTrigger : MonoBehaviour
 
     private DialogueControls dialoguecontroller;
 
-
 	
 	void Start ()
     {
@@ -22,6 +21,7 @@ public class DialogueTrigger : MonoBehaviour
 		
 	}
 
+    //if player presses space near current object, turn on dialogue
     void OnTriggerStay2D(Collider2D boxcolliderobj)
     {
         if(boxcolliderobj.gameObject.name == "Player")
@@ -34,6 +34,10 @@ public class DialogueTrigger : MonoBehaviour
                     dialoguecontroller.DialogueArray = DialogueArray;
                     dialoguecontroller.CurrentLine = 0;
                     dialoguecontroller.ShowDialogue();
+                }
+                if(transform.parent.GetComponent<NPCMovement>() != null) //true if parent of object with this script has an NPCMovement script
+                {
+                    transform.parent.GetComponent<NPCMovement>().CanMove = false;
                 }
             }
         }

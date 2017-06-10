@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class GUI : MonoBehaviour
 {
 
-    private static bool guiinscene;
+    private static bool guiinscene; //to ensure number of GUIs in scene is 1
 
-	
-	void Start ()
+
+    void Start ()
     {
         //if new scene has no gui, keep the past scene gui
         if (!guiinscene)

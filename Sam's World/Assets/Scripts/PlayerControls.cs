@@ -5,27 +5,25 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour
 {
 
+    public string EntryLocationName; //where player entered scene
+
     public float MoveSpeed;
     public float DiagonalMoveModifier;
+    public Vector2 LastMove;
+    public bool CanMove;
 
-    private float currentmovespeed;
-
+    private static bool playerinscene; //to ensure number of players in scene is 1
+    private bool playermoving;
     private Animator player;
     private Rigidbody2D playerrigidbody;
-
-    private bool playermoving;
-
-    public Vector2 LastMove;
-
-    private static bool playerinscene;
-
-    public string EntryLocationName;
-
+    private float currentmovespeed;
+    
 	
 	void Start ()
     {
         player = GetComponent<Animator>();
         playerrigidbody = GetComponent<Rigidbody2D>();
+        CanMove = true;
 
         //if new scene has no player, keep the past scene player
         if (!playerinscene)
@@ -43,6 +41,12 @@ public class PlayerControls : MonoBehaviour
 	void Update ()
     {
         playermoving = false;
+
+        if(!CanMove)
+        {
+            playerrigidbody.velocity = Vector2.zero;
+            return;
+        }
 
         //horizontal movement
 	    if (Input.GetAxisRaw("Horizontal") > 0.5f || Input.GetAxisRaw("Horizontal") < -0.5f)
