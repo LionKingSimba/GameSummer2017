@@ -26,7 +26,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         if(boxcolliderobj.gameObject.name == "Player")
         {
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (dialoguecontroller.DialogueOn == false && Input.GetKeyUp(KeyCode.Space))
             {
                 //dialoguecontroller.ShowBox(DialogueString);
                 if(!dialoguecontroller.DialogueOn)
