@@ -1,8 +1,10 @@
 Tiled
 http://www.mapeditor.org/
+https://github.com/bjorn/tiled
 
 Tiled2Unity
 http://www.seanba.com/tiled2unity
+https://github.com/Seanba/Tiled2Unity
 
 GamesPlusJames
 https://www.dropbox.com/sh/ytmsiisxn2l0134/AACHH1lH4TIIGhy19RAsd6vPa?dl=0
