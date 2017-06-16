@@ -1,3 +1,7 @@
+LitJSON
+http://lbv.github.io/litjson/
+https://github.com/lbv/litjson
+
 Tiled
 http://www.mapeditor.org/
 https://github.com/bjorn/tiled

@@ -1,0 +1,17 @@
+[
+  {
+    "id": 0,
+    "title": "Sword",
+    "value": 10
+  },
+  {
+    "id": 1,
+    "title": "Bow",
+    "value": 10
+  },
+  {
+    "id": 2,
+    "title": "Staff",
+    "value": 10
+  }
+]
