@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI;
+
 public class InventoryManager : MonoBehaviour
 {
 
@@ -34,6 +36,8 @@ public class InventoryManager : MonoBehaviour
         }
 
         AddItem(0);
+
+        Debug.Log(ItemsList[0].Title);
 	}
 
     //add item based on id passed in as arg.
@@ -49,6 +53,8 @@ public class InventoryManager : MonoBehaviour
                 GameObject ItemObject = Instantiate(InventoryItem); //create item
                 ItemObject.transform.SetParent(SlotsList[i].transform); //create slot
                 ItemObject.transform.position = Vector2.zero;
+                ItemObject.GetComponent<Image>().sprite = ItemToAdd.Sprite; //item image
+                ItemObject.name = ItemToAdd.Title; //give item title in inspector
                 break;
             }
         }

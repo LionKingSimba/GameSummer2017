@@ -85,6 +85,7 @@ public class Item
         this.Stackable = Stackable;
         this.Rarity = Rarity;
 
+        this.SpriteName = SpriteName;
         this.Sprite = Resources.Load<Sprite>(SpriteName);
     }
 

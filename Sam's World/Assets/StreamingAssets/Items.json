@@ -14,9 +14,9 @@
 
     "description": "A steel sword. Basic warrior weapon.",
     "stackable": false,
-    "rarity": 1 //scale of 1 to 10
+    "rarity": 1, //scale of 1 to 10
 
-    "spritename": ""
+    "spritename": "redbox"
   },
 
 
@@ -35,7 +35,7 @@
     "stackable": false,
     "rarity": 1,
 
-    "spritename": ""
+    "spritename": "basespritesheet_1700"
   },
 
 
@@ -54,7 +54,7 @@
     "stackable": false,
     "rarity": 1,
 
-    "spritename": ""
+    "spritename": "basespritesheet_1702"
   }
 
 
