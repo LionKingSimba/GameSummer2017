@@ -2,15 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour {
+public class InventoryManager : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+	GameObject InventoryUI;
+	GameObject InventorySlotsPanel;
+	public GameObject InventorySlot;
+	public GameObject InventoryItem;
+
+    int numslots;
+	public List<Item> Items = new List<Item>();
+	public List<GameObject> Slots = new List<GameObject>();
 	
-	// Update is called once per frame
-	void Update () {
-		
+	void Start()
+	{
+        numslots = 20;
+		InventoryUI = GameObject.Find("InventoryUI");
+		InventorySlotsPanel = InventoryUI.transform.FindChild("InventorySlots").gameObject;
+		// InventorySlotsPanel = GameObject.Find("InventorySlots");
+        
+        //create slots for items in InventorySlotsPanel
+        for (int i = 0; i < numslots; i++)
+        {
+            Slots.Add(Instantiate(InventorySlot));
+            Slots[i].transform.SetParent(InventorySlotsPanel.transform);
+        }
 	}
+
 }
