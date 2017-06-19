@@ -90,7 +90,7 @@ public class Item
         this.Value = Value;
     }
 
-    //empty item for deletions
+    //empty item for deletions or error checking
     public Item()
     {
         this.ID = -1;
