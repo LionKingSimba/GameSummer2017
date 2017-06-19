@@ -43,7 +43,8 @@ public class ItemCatalog : MonoBehaviour
             catalog.Add(new Item(
                 (int) itemdata[i]["id"], itemdata[i]["title"].ToString(), (int) itemdata[i]["value"],
                 (int) itemdata[i]["stats"]["str"], (int) itemdata[i]["stats"]["agi"], (int) itemdata[i]["stats"]["int"],
-                itemdata[i]["description"].ToString(), (bool) itemdata[i]["stackable"], (int) itemdata[i]["rarity"]
+                itemdata[i]["description"].ToString(), (bool) itemdata[i]["stackable"], (int) itemdata[i]["rarity"],
+                itemdata[i]["spritename"].ToString()
                 ));
         }
     }
@@ -66,8 +67,11 @@ public class Item
     public bool Stackable { get; set; }
     public int Rarity { get; set; }
 
+    public string SpriteName { get; set; }
+    public Sprite Sprite { get; set; }
+
     //detailed item constructor
-    public Item(int ID, string Title, int Value, int Strength, int Agility, int Intelligence, string Description, bool Stackable, int Rarity)
+    public Item(int ID, string Title, int Value, int Strength, int Agility, int Intelligence, string Description, bool Stackable, int Rarity, string SpriteName)
     {
         this.ID = ID;
         this.Title = Title;
@@ -80,6 +84,8 @@ public class Item
         this.Description = Description;
         this.Stackable = Stackable;
         this.Rarity = Rarity;
+
+        this.Sprite = Resources.Load<Sprite>(SpriteName);
     }
 
     //simple item constructor
