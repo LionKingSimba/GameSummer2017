@@ -18,8 +18,9 @@ public class ItemCatalog : MonoBehaviour
         ConstructItemCatalog();
 
         //test code
-        Debug.Log(catalog[1].Title);
-        Debug.Log(GetItembyID(0).Description);
+        //Debug.Log(catalog[1].Title);
+        //Debug.Log(GetItembyID(0).Description);
+        Debug.Log(GetItembyID(0).SpriteName);
     }
 
     //search for an item by its id
