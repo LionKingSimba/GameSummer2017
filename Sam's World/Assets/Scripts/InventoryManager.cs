@@ -15,8 +15,8 @@ public class InventoryManager : MonoBehaviour
 
     private int numslots;
 
-	public List<Item> ItemsList = new List<Item>();
-	public List<GameObject> SlotsList = new List<GameObject>();
+	public List<Item> ItemsList = new List<Item>(); //list of all items
+	public List<GameObject> SlotsList = new List<GameObject>(); //list of all slots
 	
 	void Start()
 	{
@@ -36,6 +36,9 @@ public class InventoryManager : MonoBehaviour
         }
 
         AddItem(0);
+        AddItem(1);
+        AddItem(1);
+        AddItem(1);
 
         Debug.Log(ItemsList[0].Title);
 	}
@@ -45,31 +48,58 @@ public class InventoryManager : MonoBehaviour
     {
         Item ItemToAdd = Catalog.GetItembyID(id); //get item data
 
-        if (ItemToAdd.Stackable)
+        //increase amount/stacks of item if item is stackable and exists in inventory
+        if (ItemToAdd.Stackable && CheckInventoryforItem(ItemToAdd))
         {
-
-        }
-
-        for (int i = 0; i < ItemsList.Count; i++)
-        {
-            //if ID is -1, it is an empty item
-            if (ItemsList[i].ID == -1)
+            for (int i = 0; i < ItemsList.Count; i++)
             {
-                ItemsList[i] = ItemToAdd; //put item in list
-                GameObject ItemObject = Instantiate(InventoryItem); //create item
-                ItemObject.transform.SetParent(SlotsList[i].transform); //create slot
-                ItemObject.transform.position = Vector2.zero;
-                ItemObject.GetComponent<Image>().sprite = ItemToAdd.Sprite; //item image
-                ItemObject.name = ItemToAdd.Title; //give item title in inspector
-                break;
+                if (ItemsList[i].ID == id)
+                {
+                    //get data from item if it exists
+                    //recall child 0 of a slot is the ItemObject (instance of an InventoryItem of type GameObject)
+                    ItemData data = SlotsList[i].transform.GetChild(0).GetComponent<ItemData>();
+                    data.amount++;
+                    //child 0 of data is the text indicating amount/stacks of the item
+                    data.transform.GetChild(0).GetComponent<Text>().text = data.amount.ToString();
+                    break;
+                }
             }
         }
+        //else item is not stackable or does not exist in inventory
+        else
+        {
+            //add single instance of item to inventory slot
+            for (int i = 0; i < ItemsList.Count; i++)
+            {
+                //if ID is -1, it is an empty item
+                if (ItemsList[i].ID == -1)
+                {
+                    ItemsList[i] = ItemToAdd; //put item in list
+                    GameObject ItemObject = Instantiate(InventoryItem); //create item
+                    ItemObject.transform.SetParent(SlotsList[i].transform); //create slot
+                    ItemObject.transform.position = Vector2.zero;
+                    ItemObject.GetComponent<Image>().sprite = ItemToAdd.Sprite; //item image
+                    ItemObject.name = ItemToAdd.Title; //give item title in inspector
+                    break;
+                }
+            }
+        }
+
     }
 
     //check the inventory slot to see if the item exists
-    void CheckInventoryforItem(Item item)
+    bool CheckInventoryforItem(Item item)
     {
-
+        //go through all the possible items
+        for (int i = 0; i < ItemsList.Count; i++)
+        {
+            if (ItemsList[i].ID == item.ID)
+            {
+                return true;
+            }
+        }
+        //if item was not found
+        return false;
     }
 
 }
