@@ -44,6 +44,12 @@ public class InventoryManager : MonoBehaviour
     public void AddItem(int id)
     {
         Item ItemToAdd = Catalog.GetItembyID(id); //get item data
+
+        if (ItemToAdd.Stackable)
+        {
+
+        }
+
         for (int i = 0; i < ItemsList.Count; i++)
         {
             //if ID is -1, it is an empty item
@@ -58,6 +64,12 @@ public class InventoryManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    //check the inventory slot to see if the item exists
+    void CheckInventoryforItem(Item item)
+    {
+
     }
 
 }
