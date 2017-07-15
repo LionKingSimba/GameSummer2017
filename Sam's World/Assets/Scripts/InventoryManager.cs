@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
 
-	GameObject InventoryUI;
-	GameObject InventorySlotsPanel;
+	GameObject InventoryUI; //inventory panel
+	GameObject InventorySlotsPanel; //slot panel
     ItemCatalog Catalog; //script
 	public GameObject InventorySlot;
 	public GameObject InventoryItem;
