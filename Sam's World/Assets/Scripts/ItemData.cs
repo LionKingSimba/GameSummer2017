@@ -14,7 +14,11 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     //interface implementation for IBeginDragHandler
     public void OnBeginDrag(PointerEventData eventData)
     {
-        throw new NotImplementedException();
+        //allow dragging if item exists
+        if (item != null)
+        {
+            this.transform.position = eventData.position;
+        }
     }
 
     //interface implementation for IDragHandler
