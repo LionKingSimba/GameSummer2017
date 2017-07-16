@@ -14,7 +14,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     //interface implementation for IBeginDragHandler
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //allow dragging if item exists
+        //allow dragging (within the slot) if item exists
         if (item != null)
         {
             this.transform.position = eventData.position;
@@ -24,7 +24,11 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     //interface implementation for IDragHandler
     public void OnDrag(PointerEventData eventData)
     {
-        throw new NotImplementedException();
+        //allow items to be dragged outside of slot
+        if (item != null)
+        {
+            this.transform.position = eventData.position;
+        }
     }
 
     //interface implementation for IEndDragHandler
