@@ -20,6 +20,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if (item != null)
         {
             origparent = this.transform.parent; //original parent is InventorySlot
+            //need to set parent outside of InventorySlot since item is dragged outside of InventorySlot
             this.transform.SetParent(this.transform.parent.parent); //set item parent to be InventorySlotsPanel (parent of InventorySlot)
             this.transform.position = eventData.position; //set item position to cursor position
         }
