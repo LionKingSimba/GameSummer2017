@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//script to manage Main Camera
 public class CameraControls : MonoBehaviour
 {
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//script to manage DialogueController
 public class DialogueControls : MonoBehaviour
 {
 

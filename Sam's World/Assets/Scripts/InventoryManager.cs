@@ -4,6 +4,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
+//script to manage the InventoryUI
 public class InventoryManager : MonoBehaviour
 {
 

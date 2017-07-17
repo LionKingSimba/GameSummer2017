@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//script to handle exit and start points (when player enters the new scene)
 public class LoadPlayerLocation : MonoBehaviour
 {
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 using UnityEngine.SceneManagement;
 
+//script to handle entry points (when moving to a new scene)
 public class LoadNewScene : MonoBehaviour
 {
 
