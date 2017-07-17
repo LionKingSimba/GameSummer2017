@@ -5,7 +5,7 @@ using UnityEngine;
 
 using UnityEngine.EventSystems; //for inventory ui
 
-public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 
     public Item item;
@@ -14,6 +14,13 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private Transform origparent;
     private Vector2 offset; //difference in position of icon and mouse
     private Boolean enableoffset = false; //set true if you want to enable offset
+
+    //interface implementation for IPointerDownHandler
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        ////offset = eventData.position - new Vector2(this.transform.position.x, this.transform.position.y);
+        ////this.transform.position = eventData.position - offset;
+    }
 
     //interface implementation for IBeginDragHandler
     public void OnBeginDrag(PointerEventData eventData)
@@ -54,5 +61,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnEndDrag(PointerEventData eventData)
     {
         this.transform.SetParent(origparent); //set item parent to be slot again
+        this.transform.position = origparent.transform.position;
     }
+
 }
