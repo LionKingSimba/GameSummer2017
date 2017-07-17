@@ -33,6 +33,7 @@ public class InventoryManager : MonoBehaviour
         {
             ItemsList.Add(new Item());
             SlotsList.Add(Instantiate(InventorySlot));
+            SlotsList[i].GetComponent<SlotManager>().id = i; //set id of the individual slots
             SlotsList[i].transform.SetParent(InventorySlotsPanel.transform);
         }
 
@@ -78,6 +79,7 @@ public class InventoryManager : MonoBehaviour
                     ItemsList[i] = ItemToAdd; //put item in list
                     GameObject ItemObject = Instantiate(InventoryItem); //create item
                     ItemObject.GetComponent<ItemData>().item = ItemToAdd; //set item data using Item To be Added
+                    ItemObject.GetComponent<ItemData>().slotid = i; //set slot id for location
                     ItemObject.transform.SetParent(SlotsList[i].transform); //create slot
                     ItemObject.transform.position = Vector2.zero;
                     ItemObject.GetComponent<Image>().sprite = ItemToAdd.Sprite; //item image

@@ -10,6 +10,7 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public Item item;
     public int amount;
+    public int slotid; //each slot has an id for its location
 
     private Transform origparent;
     private Vector2 offset; //difference in position of icon and mouse
