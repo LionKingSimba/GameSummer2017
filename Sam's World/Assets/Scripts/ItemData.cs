@@ -38,6 +38,7 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             //need to set parent outside of InventorySlot since item is dragged outside of InventorySlot
             this.transform.SetParent(this.transform.parent.parent); //set item parent to be InventorySlotsPanel (parent of InventorySlot)
             this.transform.position = eventData.position; //set item position to cursor position
+            GetComponent<CanvasGroup>().blocksRaycasts = false; //stop blocking raycast after item is in "drag" mode
         }
     }
 
@@ -63,6 +64,7 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         this.transform.SetParent(origparent); //set item parent to be slot again
         this.transform.position = origparent.transform.position;
+        GetComponent<CanvasGroup>().blocksRaycasts = true; //start blocking raycast after item is in "dropped" mode
     }
 
 }
