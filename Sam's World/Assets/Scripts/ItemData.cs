@@ -5,6 +5,10 @@ using UnityEngine;
 
 using UnityEngine.EventSystems; //for inventory ui
 
+/*
+script to enable movement of items from slot to slot (InventorySlot) in slot panel (InventorySlots)
+note InventorySlot (single slot) != InventorySlots (multiple slots)
+*/
 public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 

@@ -5,6 +5,8 @@ using UnityEngine;
 using LitJson;
 using System.IO;
 
+//component of TestInventory
+//script to manage item data
 public class ItemCatalog : MonoBehaviour
 {
 
