@@ -20,7 +20,8 @@ public class SlotManager : MonoBehaviour, IDropHandler
 
 	void Start()
 	{
-		inventory = GameObject.Find("TestInventory").GetComponent<InventoryManager>();
+		inventory = GameObject.Find("TestInventory").GetComponent<InventoryManager>(); //!!! test
+        //inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>(); //use this for REAL inventory
 	}
 
 	//interface implementation for IDropHandler
