@@ -15,16 +15,21 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public Item item;
     public int amount;
     public int slotid; //each slot has an id for its location
-
-    private Transform origparent;
+    
+    private InventoryManager inventory;
     private Vector2 offset; //difference in position of icon and mouse
-    private Boolean enableoffset = false; //set true if you want to enable offset
+    private Boolean enableoffset = true; //set true if you want to enable offset
+
+    void Start()
+    {
+        inventory = GameObject.Find("InventoryUI").GetComponent<InventoryManager>();
+    }
 
     //interface implementation for IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
-        ////offset = eventData.position - new Vector2(this.transform.position.x, this.transform.position.y);
-        ////this.transform.position = eventData.position - offset;
+        offset = eventData.position - new Vector2(this.transform.position.x, this.transform.position.y);
+        this.transform.position = eventData.position - offset;
     }
 
     //interface implementation for IBeginDragHandler
@@ -33,12 +38,9 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         //allow dragging (within the slot) if item exists
         if (item != null)
         {
-            if (enableoffset)
-            {
-                //offset = mouse position - icon position
-                offset = eventData.position - new Vector2(this.transform.position.x, this.transform.position.y);
-            }
-            origparent = this.transform.parent; //original parent is InventorySlot
+            //offset = mouse position - icon position
+            offset = eventData.position - new Vector2(this.transform.position.x, this.transform.position.y);
+            
             //need to set parent outside of InventorySlot since item is dragged outside of InventorySlot
             this.transform.SetParent(this.transform.parent.parent); //set item parent to be InventorySlotsPanel (parent of InventorySlot)
             this.transform.position = eventData.position; //set item position to cursor position
@@ -66,8 +68,8 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     //interface implementation for IEndDragHandler
     public void OnEndDrag(PointerEventData eventData)
     {
-        this.transform.SetParent(origparent); //set item parent to be slot again
-        this.transform.position = origparent.transform.position;
+        this.transform.SetParent(inventory.SlotsList[slotid].transform); //set item parent to be slot again
+        this.transform.position = inventory.SlotsList[slotid].transform.position;
         GetComponent<CanvasGroup>().blocksRaycasts = true; //start blocking raycast after item is in "dropped" mode
     }
 
