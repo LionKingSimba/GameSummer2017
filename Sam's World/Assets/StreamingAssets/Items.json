@@ -16,7 +16,7 @@
     "stackable": false,
     "rarity": 1, //scale of 1 to 10
 
-    "spritename": "villager_01"
+    "spritename": "sword"
   },
 
 
@@ -35,7 +35,7 @@
     "stackable": false,
     "rarity": 1,
 
-    "spritename": "villager_0"
+    "spritename": "bow"
   },
 
 
@@ -54,7 +54,7 @@
     "stackable": false,
     "rarity": 1,
 
-    "spritename": "basespritesheet_1702"
+    "spritename": "staff"
   }
 
 

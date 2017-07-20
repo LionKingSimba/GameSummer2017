@@ -89,7 +89,7 @@ public class Item
         this.Rarity = Rarity;
 
         this.SpriteName = SpriteName;
-        this.Sprite = Resources.Load<Sprite>(SpriteName);
+        this.Sprite = Resources.Load<Sprite>("Art/Items/" + SpriteName);
     }
 
     //simple item constructor
