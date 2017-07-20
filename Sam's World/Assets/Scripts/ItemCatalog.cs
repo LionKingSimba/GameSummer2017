@@ -28,7 +28,7 @@ public class ItemCatalog : MonoBehaviour
     //search for an item by its id
     public Item GetItembyID(int id)
     {
-        for (int i = 0; i< catalog.Count; i++)
+        for (int i = 0; i < catalog.Count; i++)
         {
             if (catalog[i].ID == id)
             {

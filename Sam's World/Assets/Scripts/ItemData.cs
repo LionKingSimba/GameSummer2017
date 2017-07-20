@@ -22,7 +22,7 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     void Start()
     {
-        inventory = GameObject.Find("InventoryUI").GetComponent<InventoryManager>();
+        inventory = GameObject.Find("TestInventory").GetComponent<InventoryManager>();
     }
 
     //interface implementation for IPointerDownHandler

@@ -18,9 +18,9 @@ public class SlotManager : MonoBehaviour, IDropHandler
 
 	private InventoryManager inventory;
 
-	private void Start()
+	void Start()
 	{
-		inventory = GameObject.Find("InventoryUI").GetComponent<InventoryManager>();
+		inventory = GameObject.Find("TestInventory").GetComponent<InventoryManager>();
 	}
 
 	//interface implementation for IDropHandler
