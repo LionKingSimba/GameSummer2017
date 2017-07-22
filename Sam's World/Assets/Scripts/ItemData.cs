@@ -17,6 +17,7 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public int slotid; //each slot has an id for its location
     
     private InventoryManager inventory;
+    private ToolTipManager tooltip;
     private Vector2 offset; //difference in position of icon and mouse
     private Boolean enableoffset = true; //set true if you want to enable offset
 
@@ -82,13 +83,13 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     //for activate tooltip on hover
     public void OnPointerEnter(PointerEventData eventData)
     {
-        throw new NotImplementedException();
+        
     }
 
     //interface implementation for IPointerExitHandler
     //for deactivate tooltip when not hovering
     public void OnPointerExit(PointerEventData eventData)
     {
-        throw new NotImplementedException();
+
     }
 }
