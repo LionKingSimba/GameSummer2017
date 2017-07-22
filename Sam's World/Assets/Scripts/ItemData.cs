@@ -25,6 +25,7 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         inventory = GameObject.Find("TestInventory").GetComponent<InventoryManager>(); //!!! test
         //inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>(); //use this for REAL inventory
+        tooltip = inventory.GetComponent<ToolTipManager>();
     }
 
     //interface implementation for IPointerDownHandler
@@ -83,13 +84,13 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     //for activate tooltip on hover
     public void OnPointerEnter(PointerEventData eventData)
     {
-        
+        tooltip.ToolTipOn(item);
     }
 
     //interface implementation for IPointerExitHandler
     //for deactivate tooltip when not hovering
     public void OnPointerExit(PointerEventData eventData)
     {
-
+        tooltip.ToolTipOff();
     }
 }
