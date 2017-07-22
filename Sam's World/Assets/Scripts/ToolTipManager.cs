@@ -11,12 +11,15 @@ public class ToolTipManager : MonoBehaviour {
     void Start()
     {
         tooltip = GameObject.Find("ToolTip");
+        tooltip.SetActive(false);
     }
 
     //show tooltip when mouse hovers over item
     public void ToolTipOn(Item item)
     {
         this.item = item;
+        ConstructString();
+        tooltip.SetActive(true);
     }
 
     //turn off tooltip when mouse is not over an item

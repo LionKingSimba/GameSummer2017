@@ -9,7 +9,7 @@ using UnityEngine.EventSystems; //for inventory ui
 script to enable movement of items from slot to slot (InventorySlot) in slot panel (InventorySlots)
 note InventorySlot (single slot) != InventorySlots (multiple slots)
 */
-public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
     public Item item;
@@ -27,6 +27,7 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     }
 
     //interface implementation for IPointerDownHandler
+    //for setting positions when beginning to click and drag items
     public void OnPointerDown(PointerEventData eventData)
     {
         offset = eventData.position - new Vector2(this.transform.position.x, this.transform.position.y);
@@ -34,6 +35,7 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     }
 
     //interface implementation for IBeginDragHandler
+    //for beginning to click and drag items
     public void OnBeginDrag(PointerEventData eventData)
     {
         //allow dragging (within the slot) if item exists
@@ -50,6 +52,7 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     }
 
     //interface implementation for IDragHandler
+    //for setting position of item when dragging
     public void OnDrag(PointerEventData eventData)
     {
         //allow items to be dragged outside of slot
@@ -67,6 +70,7 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     }
 
     //interface implementation for IEndDragHandler
+    //for placing items
     public void OnEndDrag(PointerEventData eventData)
     {
         this.transform.SetParent(inventory.SlotsList[slotid].transform); //set item parent to be slot again
@@ -74,4 +78,17 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         GetComponent<CanvasGroup>().blocksRaycasts = true; //start blocking raycast after item is in "dropped" mode
     }
 
+    //interface implementation for IPointerEnterHandler
+    //for activate tooltip on hover
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        throw new NotImplementedException();
+    }
+
+    //interface implementation for IPointerExitHandler
+    //for deactivate tooltip when not hovering
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        throw new NotImplementedException();
+    }
 }
