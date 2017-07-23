@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI;
+
 public class ToolTipManager : MonoBehaviour {
 
     private Item item;
@@ -41,7 +43,8 @@ public class ToolTipManager : MonoBehaviour {
     //does text concaternation and styling
     public void ConstructString()
     {
-        itemname = item.Title;
+        itemname = "<color=#ffffff>" + item.Title + "</color>";
+        tooltip.transform.GetChild(0).GetComponent<Text>().text = itemname; //child of ToolTip is Text
     }
 
 }
