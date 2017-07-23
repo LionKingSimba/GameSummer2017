@@ -19,7 +19,7 @@ public class ToolTipManager : MonoBehaviour {
     {
         if (tooltip.activeSelf)
         {
-            transform.position = Input.mousePosition;
+            tooltip.transform.position = Input.mousePosition;
         }    
     }
 
