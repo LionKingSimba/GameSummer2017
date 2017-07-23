@@ -36,7 +36,13 @@ public class SlotManager : MonoBehaviour, IDropHandler
             droppeditem.slotid = id;
         }
         //if slot is not empty, swap item slots
-        else
+        /*
+        need to check if item is not dropped in same place
+        when dropping items on same spot, script becomes confused
+        since clicking/dragging an item removes it from its slot
+        then the slot has no child (thus this.transform.GetChild(0) gives an error)
+        */
+        else if (droppeditem.slotid != id) 
         {
             //move the item in the new slot to the old slot
             Transform itemtoswap = this.transform.GetChild(0); //first child of slot is the item
