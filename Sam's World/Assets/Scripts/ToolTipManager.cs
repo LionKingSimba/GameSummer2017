@@ -14,6 +14,15 @@ public class ToolTipManager : MonoBehaviour {
         tooltip.SetActive(false);
     }
 
+    //adjust tooltip position with mouse position
+    void Update()
+    {
+        if (tooltip.activeSelf)
+        {
+            transform.position = Input.mousePosition;
+        }    
+    }
+
     //show tooltip when mouse hovers over item
     public void ToolTipOn(Item item)
     {
@@ -25,7 +34,7 @@ public class ToolTipManager : MonoBehaviour {
     //turn off tooltip when mouse is not over an item
     public void ToolTipOff()
     {
-
+        tooltip.SetActive(false);
     }
 
     //create string that contains tooltip information
