@@ -13,7 +13,7 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 {
 
     public Item item;
-    public int amount;
+    public int amount; //number of stacks
     public int slotid; //each slot has an id for its location
     
     private InventoryManager inventory;

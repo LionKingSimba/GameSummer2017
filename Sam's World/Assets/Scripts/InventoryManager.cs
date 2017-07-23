@@ -80,6 +80,7 @@ public class InventoryManager : MonoBehaviour
                     ItemsList[i] = ItemToAdd; //put item in list
                     GameObject ItemObject = Instantiate(InventoryItem); //create item
                     ItemObject.GetComponent<ItemData>().item = ItemToAdd; //set item data using Item To be Added
+                    ItemObject.GetComponent<ItemData>().amount = 1; //set number of stacks to 1
                     ItemObject.GetComponent<ItemData>().slotid = i; //set slot id for location
                     ItemObject.transform.SetParent(SlotsList[i].transform); //create slot
                     ItemObject.transform.position = Vector2.zero;
