@@ -39,13 +39,23 @@ public class ToolTipManager : MonoBehaviour {
         tooltip.SetActive(false);
     }
 
-    //create string that contains tooltip information
+    //create string that contains tooltip information based on item type
     //does text concaternation and styling
+    //Note item type will affect the tooltip display
     public void ConstructString()
     {
-        itemname = "<color=#00ffff><b>" + item.Title + "</b></color>" + "\n\n"
-                    + item.Description + "\n\n"
-                    + "<color=#ffff00>" + "Value: " + item.Value + "</color>";
+        if (item.Type == "Equipment")
+        {
+            itemname = "<color=#00ffff><b>" + item.Title + "</b></color>" + "\n\n"
+                        + item.Description + "\n\n"
+                        + "<color=#ffff00>" + "Value: " + item.Value + "</color>";
+        }
+        else
+        {
+            itemname = "<color=#00ffff><b>" + item.Title + "</b></color>" + "\n\n"
+                        + item.Description + "\n\n"
+                        + "<color=#ffff00>" + "Value: " + item.Value + "</color>";
+        }
         tooltip.transform.GetChild(0).GetComponent<Text>().text = itemname; //child of ToolTip is Text
     }
 

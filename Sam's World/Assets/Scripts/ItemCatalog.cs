@@ -59,32 +59,34 @@ public class ItemCatalog : MonoBehaviour
 public class Item
 {
     public int ID { get; set; }
+    public string Type { get; set; }
     public string Title { get; set; }
-    public int Value { get; set; }
-
+    public string Description { get; set; }
+    
     public int Strength { get; set; }
     public int Agility { get; set; }
     public int Intelligence { get; set; }
 
-    public string Description { get; set; }
-    public bool Stackable { get; set; }
+    public int Value { get; set; }
     public int Rarity { get; set; }
-
+    public bool Stackable { get; set; }
+    
     public string SpriteName { get; set; }
     public Sprite Sprite { get; set; }
 
     //detailed item constructor
-    public Item(int ID, string Title, int Value, int Strength, int Agility, int Intelligence, string Description, bool Stackable, int Rarity, string SpriteName)
+    public Item(int ID, string Title, string Type, string Description, int Strength, int Agility, int Intelligence, int Value, int Rarity, bool Stackable, string SpriteName)
     {
         this.ID = ID;
         this.Title = Title;
-        this.Value = Value;
+        this.Type = Type;
+        this.Description = Description;
 
         this.Strength = Strength;
         this.Agility = Agility;
         this.Intelligence = Intelligence;
 
-        this.Description = Description;
+        this.Value = Value;
         this.Stackable = Stackable;
         this.Rarity = Rarity;
 
