@@ -43,7 +43,7 @@ public class ToolTipManager : MonoBehaviour {
     //does text concaternation and styling
     public void ConstructString()
     {
-        itemname = "<color=#ffffff>" + item.Title + "</color>";
+        itemname = "<color=#00ffff><b>" + item.Title + "</b></color>" + "\n\n" + item.Description + "";
         tooltip.transform.GetChild(0).GetComponent<Text>().text = itemname; //child of ToolTip is Text
     }
 
