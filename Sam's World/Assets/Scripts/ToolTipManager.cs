@@ -48,6 +48,9 @@ public class ToolTipManager : MonoBehaviour {
         {
             itemname = "<color=#00ffff><b>" + item.Title + "</b></color>" + "\n\n"
                         + item.Description + "\n\n"
+                        + "STR:" + item.Strength + "\n"
+                        + "AGI:" + item.Agility + "\n"
+                        + "INT:" + item.Intelligence + "\n\n"
                         + "<color=#ffff00>" + "Value: " + item.Value + "</color>";
         }
         else

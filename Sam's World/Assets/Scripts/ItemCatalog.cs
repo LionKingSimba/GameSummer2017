@@ -44,9 +44,9 @@ public class ItemCatalog : MonoBehaviour
         for (int i = 0; i < itemdata.Count; i++)
         {
             catalog.Add(new Item(
-                (int) itemdata[i]["id"], itemdata[i]["title"].ToString(), (int) itemdata[i]["value"],
+                (int) itemdata[i]["id"], itemdata[i]["type"].ToString(), itemdata[i]["title"].ToString(), itemdata[i]["description"].ToString(),
                 (int) itemdata[i]["stats"]["str"], (int) itemdata[i]["stats"]["agi"], (int) itemdata[i]["stats"]["int"],
-                itemdata[i]["description"].ToString(), (bool) itemdata[i]["stackable"], (int) itemdata[i]["rarity"],
+                (int)itemdata[i]["value"], (int) itemdata[i]["rarity"], (bool)itemdata[i]["stackable"],
                 itemdata[i]["spritename"].ToString()
                 ));
         }
@@ -75,7 +75,7 @@ public class Item
     public Sprite Sprite { get; set; }
 
     //detailed item constructor
-    public Item(int ID, string Title, string Type, string Description, int Strength, int Agility, int Intelligence, int Value, int Rarity, bool Stackable, string SpriteName)
+    public Item(int ID, string Type, string Title, string Description, int Strength, int Agility, int Intelligence, int Value, int Rarity, bool Stackable, string SpriteName)
     {
         this.ID = ID;
         this.Title = Title;
