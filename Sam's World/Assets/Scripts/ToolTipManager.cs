@@ -44,6 +44,7 @@ public class ToolTipManager : MonoBehaviour {
     //Note item type will affect the tooltip display
     public void ConstructString()
     {
+        //string itemtitlecolor; //variable to change color of item title based on item rarity
         if (item.Type == "Equipment")
         {
             itemname = "<color=#00ffff><b>" + item.Title + "</b></color>" + "\n\n"
@@ -51,13 +52,15 @@ public class ToolTipManager : MonoBehaviour {
                         + "STR:" + item.Strength + "\n"
                         + "AGI:" + item.Agility + "\n"
                         + "INT:" + item.Intelligence + "\n\n"
-                        + "<color=#ffff00>" + "Value: " + item.Value + "</color>";
+                        + "<color=#ffff00>" + "Value: " + item.Value + "</color>" + "\n\n"
+                        + "<color=#5500ff>" + "Rarity: " + item.Rarity + "</color>";
         }
         else
         {
             itemname = "<color=#00ffff><b>" + item.Title + "</b></color>" + "\n\n"
                         + item.Description + "\n\n"
-                        + "<color=#ffff00>" + "Value: " + item.Value + "</color>";
+                        + "<color=#ffff00>" + "Value: " + item.Value + "</color>" + "\n\n"
+                        + "<color=#5500ff>" + "Rarity: " + item.Rarity + "</color>";
         }
         tooltip.transform.GetChild(0).GetComponent<Text>().text = itemname; //child of ToolTip is Text
     }
