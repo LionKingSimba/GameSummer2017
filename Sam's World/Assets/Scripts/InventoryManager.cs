@@ -24,7 +24,7 @@ public class InventoryManager : MonoBehaviour
 	{
         Catalog = GetComponent<ItemCatalog>(); //get the script from obj component
 
-        numslots = 21;
+        numslots = 12;
 		InventoryUI = GameObject.Find("InventoryUI");
 		InventorySlotsPanel = InventoryUI.transform.FindChild("InventorySlots").gameObject;
 		// InventorySlotsPanel = GameObject.Find("InventorySlots");
